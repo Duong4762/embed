@@ -6,6 +6,8 @@ import com.example.demo.service.LogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/logs")
 @RequiredArgsConstructor
@@ -14,13 +16,9 @@ public class LogController {
 
     private final LogService logService;
 
-    @PostMapping
-    public LogEntry createLog(
-            @RequestBody LogRequest request
-    ) {
+    @GetMapping
+    public List<LogEntry> getLogs() {
 
-        return logService.createLog(
-                request
-        );
+        return logService.getLogs();
     }
 }

@@ -1,14 +1,20 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.response.DeviceStatus;
+import com.example.demo.dto.response.LogEntry;
+import com.example.demo.enums.LogType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
 public class DeviceControllerService {
 
     private final FirebaseService firebaseService;
+
+    private final LogService logService;
 
     private static final String PATH = "devices";
 
@@ -87,6 +93,8 @@ public class DeviceControllerService {
         status.setServo(newStatus);
 
         firebaseService.setValue(PATH, status);
+
+        logService.createLog(new LogEntry(LocalDateTime.now().toString(), newStatus.equals("UP") ? LogType.BARRIER_UP.getMessage() : LogType.BARRIER_DOWN.getMessage()));
 
         return status;
     }

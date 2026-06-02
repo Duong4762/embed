@@ -46,4 +46,9 @@ public class DeviceController {
     ) {
         return deviceControllerService.updateServo(status);
     }
+
+    @GetMapping("")
+    public Object getAll() {
+        return deviceControllerService.getCurrent();
+    }
 }

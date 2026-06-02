@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LogEntry {
-    private String message;
 
     private String time;
 
-    private LogType type;
+    private String message;
 }

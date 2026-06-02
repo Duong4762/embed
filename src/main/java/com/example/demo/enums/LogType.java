@@ -1,21 +1,21 @@
 package com.example.demo.enums;
 
 public enum LogType {
-    TRAIN_APPROACHING,
+    BARRIER_DOWN("Hạ rào"),
 
-    TRAIN_CROSSING,
+    BARRIER_UP("Nâng rào");
 
-    TRAIN_PASSED,
+    private String message;
 
-    BARRIER_DOWN,
+    LogType(String message){
+        this.message = message;
+    }
 
-    BARRIER_UP,
+    public String getMessage() {
+        return message;
+    }
 
-    SENSOR_A_TRIGGERED,
-
-    SENSOR_B_TRIGGERED,
-
-    SYSTEM_START,
-
-    SYSTEM_ERROR
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }
