@@ -1,6 +1,6 @@
 package com.example.demo.dto.response;
 
-import com.example.demo.enums.BarrierState;
+import com.example.demo.enums.LogType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,9 +8,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BarrierStatus {
+public class LogEntry {
+    private String message;
 
-    private BarrierState state;
+    private String time;
 
-    private Long updatedAt;
+    private LogType type;
 }

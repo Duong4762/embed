@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.request.TrainLocationRequest;
+import com.example.demo.dto.request.TrainUpdateRequest;
+import com.example.demo.dto.response.TrainStatus;
 import com.example.demo.service.TrainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -10,28 +11,21 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class TrainController {
-
     private final TrainService trainService;
 
-    @GetMapping("/location")
-    public Object getTrainLocation() {
-        return trainService.getCurrentLocation();
+    @GetMapping
+    public TrainStatus getTrainStatus() {
+
+        return trainService.getTrainStatus();
     }
 
-    @PostMapping("/location")
-    public Object updateTrainLocation(
-            @RequestBody TrainLocationRequest request
+    @PostMapping
+    public TrainStatus updateTrain(
+            @RequestBody TrainUpdateRequest request
     ) {
-        return trainService.updateLocation(request);
-    }
 
-    @GetMapping("/eta")
-    public Object getEstimatedArrival() {
-        return trainService.getEstimatedArrival();
-    }
-
-    @GetMapping("/distance")
-    public Object getDistanceToBarrier() {
-        return trainService.getDistanceToBarrier();
+        return trainService.updateTrain(
+                request
+        );
     }
 }

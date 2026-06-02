@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/device")
+@RequestMapping("/api/devices")
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class DeviceController {
@@ -38,5 +38,12 @@ public class DeviceController {
             @RequestParam String message
     ) {
         return deviceControllerService.updateLcd(message);
+    }
+
+    @PostMapping("/servo")
+    public Object updateServo(
+            @RequestParam String status
+    ) {
+        return deviceControllerService.updateServo(status);
     }
 }

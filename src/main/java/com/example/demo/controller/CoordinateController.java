@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
-
-import com.example.demo.dto.request.CoordinateRequest;
+import com.example.demo.dto.request.CoordinateUpdateRequest;
 import com.example.demo.service.CoordinateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -11,32 +10,25 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class CoordinateController {
-
     private final CoordinateService coordinateService;
 
     @GetMapping
-    public Object getAllCoordinates() {
-        return coordinateService.getAllCoordinates();
+    public Object getAllCoordinates(){
+        return coordinateService.getAllCoordinate();
     }
 
     @PutMapping("/station-a")
-    public Object updateStationA(
-            @RequestBody CoordinateRequest request
-    ) {
-        return coordinateService.updateStationA(request);
+    public void updateStationA(@RequestBody CoordinateUpdateRequest request){
+        coordinateService.updateStationA(request);
     }
 
     @PutMapping("/station-b")
-    public Object updateStationB(
-            @RequestBody CoordinateRequest request
-    ) {
-        return coordinateService.updateStationB(request);
+    public void updateStationB(@RequestBody CoordinateUpdateRequest request){
+        coordinateService.updateStationB(request);
     }
 
     @PutMapping("/barrier")
-    public Object updateBarrier(
-            @RequestBody CoordinateRequest request
-    ) {
-        return coordinateService.updateBarrier(request);
+    public void updateBarrier(@RequestBody CoordinateUpdateRequest request){
+        coordinateService.updateBarrier(request);
     }
 }
