@@ -16,12 +16,22 @@ public class CoordinateService {
     private static final String PATH = "coordinates";
 
     public Map<String, CoordinateResponse> getAllCoordinate(){
-        Map<String, CoordinateResponse> coordinateMap =
+        CoordinateResponse barrier =
                 firebaseService.getValue(
-                        PATH,
-                        Map.class
+                        PATH+"/barrier",
+                        CoordinateResponse.class
                 );
-        return coordinateMap;
+        CoordinateResponse stationA =
+                firebaseService.getValue(
+                        PATH+"/stationA",
+                        CoordinateResponse.class
+                );
+        CoordinateResponse stationB =
+                firebaseService.getValue(
+                        PATH+"/stationB",
+                        CoordinateResponse.class
+                );
+        return Map.of("barrier", barrier, "stationA", stationA, "stationB", stationB);
     }
 
     public void updateStationA(CoordinateUpdateRequest request){
