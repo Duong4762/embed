@@ -14,36 +14,31 @@ public class DeviceController {
 
     @PostMapping("/led/red")
     public Object setRedLed(
-            @RequestParam boolean enabled
-    ) {
+            @RequestParam boolean enabled) {
         return deviceControllerService.setRedLed(enabled);
     }
 
     @PostMapping("/led/green")
     public Object setGreenLed(
-            @RequestParam boolean enabled
-    ) {
+            @RequestParam boolean enabled) {
         return deviceControllerService.setGreenLed(enabled);
     }
 
     @PostMapping("/buzzer")
     public Object setBuzzer(
-            @RequestParam boolean enabled
-    ) {
+            @RequestParam boolean enabled) {
         return deviceControllerService.setBuzzer(enabled);
     }
 
     @PostMapping("/lcd")
     public Object updateLcd(
-            @RequestParam String message
-    ) {
+            @RequestParam String message) {
         return deviceControllerService.updateLcd(message);
     }
 
     @PostMapping("/servo")
     public Object updateServo(
-            @RequestParam String status
-    ) {
+            @RequestParam String status) {
         return deviceControllerService.updateServo(status);
     }
 
